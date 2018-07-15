@@ -13,7 +13,7 @@ import com.briup.app02.service.IStudentService;
 import com.briup.app02.util.MsgResponse;
 
 @RestController
-@RequestMapping("/s")
+@RequestMapping("/student")
 public class StudentController {
 	// 注入studentService的实例
 	@Autowired

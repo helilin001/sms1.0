@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.briup.app02.bean.Course;
-import com.briup.app02.service.ICourseService;
+import com.briup.app02.bean.Grade;
+import com.briup.app02.service.IGradeService;
 import com.briup.app02.util.MsgResponse;
 
 @RestController
-@RequestMapping("/course")
-public class CourseController {
+@RequestMapping("/grade")
+public class GradeController {
 	// 注入studentService的实例
 	@Autowired
-	private ICourseService courseService;
+	private IGradeService gradeService;
 	
-	@GetMapping("deleteCourseById")
-	public MsgResponse deleteCourseById(long id){
+	@GetMapping("deleteGradeById")
+	public MsgResponse deleteGradeById(long id){
 		try {
 			// 调用service层代码删除学生信息
-			courseService.deleteById(id);
+			gradeService.deleteById(id);
 			// 如果删除成功返回成功信息
 			return MsgResponse.success("删除成功！", null);
 		} catch (Exception e) {
@@ -33,10 +33,10 @@ public class CourseController {
 		}
 	}
 	
-	@PostMapping("updateCourse")
-	public String updateCourse(Course course){
+	@PostMapping("updateGrade")
+	public String updateGrade(Grade grade){
 		try {
-			courseService.update(course);
+			gradeService.update(grade);
 			return "修改成功！";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,10 +50,10 @@ public class CourseController {
 	 * @param student 
 	 * @return 
 	 * */
-	@PostMapping("saveCourse")
-	public void saveCourse(Course course){
+	@PostMapping("saveGrade")
+	public void saveCourse(Grade grade){
 		try {
-			courseService.save(course);
+			gradeService.save(grade);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -61,11 +61,11 @@ public class CourseController {
 	
 	
 	
-	// http://127.0.0.1:8080/course/findAllCourse
-	@GetMapping("findAllCourse")
-	public MsgResponse findAllCourse(){
+	// http://127.0.0.1:8080/student/findAllStudent
+	@GetMapping("findAllGrade")
+	public MsgResponse findAllGrade(){
 		try {
-			List<Course> list = courseService.findAll();
+			List<Grade> list = gradeService.findAll();
 			return MsgResponse.success("查询成功", list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,10 +73,10 @@ public class CourseController {
 		}
 	}
 	
-	@GetMapping("findCourseById")
-	public Course findCourseById(long id){
+	@GetMapping("findGradeById")
+	public Grade findGradeById(long id){
 		try {
-			Course course = courseService.findById(id);
+			Grade course = gradeService.findById(id);
 			return course;
 		} catch (Exception e) {
 			e.printStackTrace();
